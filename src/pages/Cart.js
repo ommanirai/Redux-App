@@ -10,9 +10,9 @@ const Cart = () => {
     const cart_items = cartStore.cart_items
     const dispatch = useDispatch()
 
-    const navigate= useNavigate()
-    
-    const Payment = () =>{
+    const navigate = useNavigate()
+
+    const Payment = () => {
         return navigate('/payment/1000,100,100')
     }
 
@@ -58,10 +58,15 @@ const Cart = () => {
                             </tbody>
                         </table>
                         :
-                        <div className='text-center fs-4'>There are no items in cart.</div>
+                        <div className='text-center fs-4 font-weight-bold'>There are no items in cart.</div>
                 }
-                <button className='btn btn-warning' onClick={Payment}>Proceed to Payment</button>
-            </div> 
+                {
+                    cart_items.length > 0 &&
+                    <div className='text-center mt-3'>
+                        <button className='btn btn-warning' onClick={Payment}>Proceed to Payment</button>
+                    </div>
+                }
+            </div>
         </>
     )
 }
